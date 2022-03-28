@@ -11,9 +11,23 @@ import { SIZES, FONTS, COLORS, icons } from "../constants";
 
 const TrendingCard = ({ containerStyle, recipeItem, onPress }) => {
   return (
-    <View>
-      <Text>TrendingCard</Text>
-    </View>
+    <TouchableOpacity
+      style={{
+        width: 250,
+        height: 350,
+        marginTop: SIZES.radius,
+        marginRight: 20,
+        borderRadius: SIZES.radius,
+        ...containerStyle,
+      }}
+      onPress={onPress}
+    >
+      <Image
+        source={recipeItem.image}
+        style={{width: 250, height: 350, borderRadius: SIZES.radius}}
+        resizeMode='cover'
+      />
+    </TouchableOpacity>
   );
 };
 

@@ -8,7 +8,7 @@ import {
   TextInput,
   FlatList,
 } from "react-native";
-import { CategoryCard } from "../components";
+import { CategoryCard, TrendingCard } from "../components";
 import { SIZES, FONTS, COLORS, images, dummyData, icons } from "../constants";
 
 const Home = ({ navigation }) => {
@@ -118,11 +118,7 @@ const Home = ({ navigation }) => {
           keyExtractor={item => `${item.id}`}
           renderItem={({item, index}) => {
             return(
-              <View>
-                <Text>
-                  {item.name}
-                </Text>
-              </View>
+              <TrendingCard recipeItem={item} />
             )
           }}
         />
