@@ -115,13 +115,41 @@ const Home = ({ navigation }) => {
           data={dummyData.trendingRecipes}
           horizontal
           showsHorizontalScrollIndicator={false}
-          keyExtractor={item => `${item.id}`}
-          renderItem={({item, index}) => {
-            return(
-              <TrendingCard recipeItem={item} />
-            )
+          keyExtractor={(item) => `${item.id}`}
+          renderItem={({ item, index }) => {
+            return (
+              <TrendingCard
+                recipeItem={item}
+                containerStyle={{ marginLeft: index == 0 ? SIZES.padding : 0 }}
+                onPress={() => navigation.navigate("Recipe", { recipe: item })}
+              />
+            );
           }}
         />
+      </View>
+    );
+  };
+
+  let renderCategoryHeader = () => {
+    return (
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          marginTop: 20,
+          marginHorizontal: SIZES.padding,
+        }}
+      >
+        {/* Section Title */}
+        <Text style={{flex: 1, ...FONTS.h2}} >
+          Categories
+        </Text>
+        {/* View All */}
+        <TouchableOpacity>
+          <Text style={{color: COLORS.gray, ...FONTS.body4}} >
+            View All
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   };
@@ -143,6 +171,7 @@ const Home = ({ navigation }) => {
             {/* Trending Section */}
             {renderTrendingSection()}
             {/* Category Card */}
+            {renderCategoryHeader()}
           </View>
         }
         renderItem={({ item }) => {
